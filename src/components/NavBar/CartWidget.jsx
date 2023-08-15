@@ -1,15 +1,20 @@
 import React, { useContext } from "react";
-import CartContext from "../../context/CartContext"; // Ajusta la ruta según la ubicación real
+import { CartContext } from "../../context/CartContext";
 import { Link } from "react-router-dom";
 
 function CartWidget() {
-  const context = useContext(CartContext); // Usa CartContext en lugar de CartContext
+  const { getTotalItemsInCart } = useContext(CartContext);
+  const totalItems = getTotalItemsInCart();
+
+  if (totalItems === 0) {
+    return null; 
+  }
 
   return (
-    <Link to="/cart">
-      <div>
-        🛒
-        <span> {context.getTotalItemsInCart()} </span>
+    <Link to="/cart" style={{ textDecoration: "none" }}>
+      <div className="cart-widget">
+        <span className="cart-icon">🛒</span>
+        <span className="cart-count">{totalItems}</span>
       </div>
     </Link>
   );

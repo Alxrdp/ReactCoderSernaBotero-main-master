@@ -46,12 +46,9 @@ function ItemCount(props) {
 
       <button
         disabled={props.stock === 0}
-        //onClick={ props.onConfirm } -> Solo invocar la funcion
-        onClick={() => props.onConfirm(clickCount)} //-> Solo invocar la funcion + parametros
-        //onClick={(event) => props.onConfirm(clickCount, event)} // > Solo invocar la funcion + parametros + objeto event
+        onClick={() => props.onConfirm(clickCount)}
         className="item-count-button add-to-cart-button"
-      >
-        <h4>Añadir al carrito</h4>
+      > <h4>Añadir al carrito</h4>
       </button>
     </div>
   );

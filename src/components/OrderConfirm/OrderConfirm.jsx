@@ -4,34 +4,42 @@ import { getOrder } from "../../services/firebase";
 
 function OrderConfirm() {
   const [orderData, setOrderData] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   const { id } = useParams();
 
   useEffect(() => {
-    getOrder(id).then((order) => {
-      console.log(order);
-      setOrderData(order);
-    });
-  }, []);
+    getOrder(id)
+      .then((order) => {
+        console.log(order);
+        setOrderData(order);
+      })
+      .catch((error) => {
+        console.error("Error fetching order:", error);
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
+  }, [id]);
 
   return (
     <div>
       <h1>Gracias por tu compra! </h1>
-      {orderData !== null ? (
+      {isLoading ? (
+        <p>Cargando...</p>
+      ) : orderData !== null ? (
         <div>
-          <p>
-            Tus productos comprados:
-            {orderData.items.map((item) => {
-              return (
-                <small>
-                  {item.title} - {item.count} unidades
-                </small>
-              );
-            })}
-          </p>
+          <div className="item-card-1">
+            <p>Tus productos comprados:</p>
+            {orderData.items.map((item) => (
+              <small key={item.id}>
+                {item.title} - {item.count} unidades
+              </small>
+            ))}
+          </div>
         </div>
       ) : (
-        <p>Cargando</p>
+        <p>No se pudo cargar la orden.</p>
       )}
     </div>
   );

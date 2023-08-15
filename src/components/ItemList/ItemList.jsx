@@ -6,7 +6,7 @@ function ItemList(props) {
 
   return (
     <div>
-      <h1>Listado de Productos</h1>
+      <h1>Nuestras Cervezas</h1>
       <div className="flex-container">
         {products.map((item) => (
           <Item key={item.id} {...item} />

@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import  CartContext  from "../../context/CartContext";
+import { CartContext } from "../../context/CartContext";
 import { createOrder } from "../../services/firebase";
 import { useContext, useState } from "react";
 
@@ -23,9 +23,10 @@ function Checkout() {
     };
 
     try {
-      const idOrder = await createOrder(orderData);
-      console.log(`Gracias por tu compra, tu numero de orden es ${idOrder}`);
-      navigate(`/order-confirmation/${idOrder}`);
+      const docCreated = await createOrder(orderData);
+      alert (`Gracias por tu compra, tu numero de orden es ${docCreated}`);
+      navigate(`/order-confirmation/${docCreated}`);
+
     } catch (error) {
       alert(`No se pudo realizar la compra ${error.message}`);
     }
@@ -34,7 +35,6 @@ function Checkout() {
   function onInputChange(evt) {
     const value = evt.target.value;
     const field = evt.target.name;
-    //buyer["firstname"] -> buyer.firstname
     const newState = { ...buyer };
     newState[field] = value;
     setBuyer(newState);
@@ -51,7 +51,7 @@ function Checkout() {
 
   return (
     <form>
-      <h2>Completa tus datos para completar la compra🛍</h2>
+      <h2>Ingresa tus datos para completar la compra</h2>
 
       <div style={{ display: "flex", marginBottom: 8 }}>
         <label htmlFor="lastname" style={{ width: "100px", marginRight: 4 }}>

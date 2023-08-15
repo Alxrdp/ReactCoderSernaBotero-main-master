@@ -1,7 +1,7 @@
 import React from "react";
 import { useContext } from "react";
-import  CartContext  from "../../context/CartContext";
-import { createOrder } from "../../services/firebase";
+import { CartContext } from "../../context/CartContext";
+import { createOrder } from "../../services/firebase.js";
 import { Link, useNavigate } from "react-router-dom";
 
 function CartContainer() {

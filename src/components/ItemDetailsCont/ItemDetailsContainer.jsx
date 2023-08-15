@@ -3,23 +3,18 @@ import { getProductData } from "../../services/firebase";
 import { Link, useParams } from "react-router-dom";
 import ButtonComponent from "../ButtonComponent/ButtonComponent";
 import ItemCount from "../ItemCount/ItemCount";
-import CartContext from "../../context/CartContext";
+import { CartContext } from "../../context/CartContext";
 
-function ItemDetailContainer() {
+function ItemDetailsContainer() {
   const [product, setProduct] = useState({});
   const [isAddedToCart, setIsAddedToCart] = useState(false);
-
   const { id } = useParams();
-
   const { addToCart, getItemInCart } = useContext(CartContext);
-
   const itemInCart = getItemInCart(id);
-
   const maxItems = itemInCart
     ? product.stock - itemInCart.count
     : product.stock;
 
-  console.log(maxItems);
   useEffect(() => {
     async function requestProduct() {
       const respuesta = await getProductData(id);
@@ -31,16 +26,14 @@ function ItemDetailContainer() {
 
   function handleAddToCart(clickCount) {
     addToCart(product, clickCount);
-    alert(`Producto agregado al carrito, cantidad: ${clickCount}`);
+    alert(`Los productos fueron agregados al carrito, cantidad: ${clickCount}`);
     setIsAddedToCart(true);
   }
-
-  /* Separar esto en <ItemDetail .../> */
   return (
-    <div style={{ marginBottom: "100px" }}>
-      <Link to="/product/2">Ir al item 2</Link>
+    <div className="item-card-1">
+    <div style={{ marginBottom: "150px" }}>
       <div>
-        <img width={600} src={product.img} alt="imagen"></img>
+        <img width={800} src={product.img} alt="imagen"></img>
       </div>
       <div>
         <h2>{product.title}</h2>
@@ -50,24 +43,23 @@ function ItemDetailContainer() {
         <small>{product.description}</small>
       </div>
       {product.stock > 0 ? (
-        /* Si tenemos STOCK */
         isAddedToCart ? (
           <a href="/cart">Ir al carrito</a>
         ) : (
           <ItemCount stock={maxItems} onConfirm={handleAddToCart} />
         )
       ) : (
-        // END si tenemos stock
-        <p>No hay stock disponible</p>
+        <p>Sin stock</p>
       )}
       {itemInCart && (
-        <h2>Ya agregaste {itemInCart.count} unidades de este producto</h2>
+        <h2>Agregaste {itemInCart.count} unidades de {product.title}</h2>
       )}
       <Link to="/">
         <ButtonComponent>Volver al inicio</ButtonComponent>
       </Link>
     </div>
+    </div>
   );
 }
 
-export default ItemDetailContainer;
+export default ItemDetailsContainer;

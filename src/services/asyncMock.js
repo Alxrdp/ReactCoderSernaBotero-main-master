@@ -1,6 +1,4 @@
-function getData() {    
-    return new Promise((resolve, reject) => {
-      const productos = [
+      /*const productos = [
         {
           title: "Anaray",
           litledescription: "Fruit Beer",
@@ -38,14 +36,33 @@ function getData() {
           price: 12000,
         },
       ];
+      function getData() {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            const date = new Date().toLocaleDateString;
+            resolve(productos, date);
+          }, 2000);
+        });
+      }
+      export function getProductData(idURL) {
+        return new Promise((resolve, reject) => {
+          const productRequested = productos.find(
+            (item) => item.id === Number(idURL)
+          );
       
-  console.log(productos);
-   
-      setTimeout(() => {
-        const date = new Date().toLocaleDateString;
-        resolve(productos, date);
-      }, 500);
-    });
-  }
-  
-  export default getData;
+          setTimeout(() => {
+            resolve(productRequested);
+          }, 2000);
+        });
+      }
+      export function getCategoryData(categoryURL) {
+        return new Promise((resolve, reject) => {
+          const categoryRequested = productos.filter((item) => {
+            return item.category.toLowerCase() === categoryURL.toLowerCase();
+          });
+          setTimeout(() => {
+            resolve(categoryRequested);
+          }, 2000);
+        });
+      }
+      export default getData;*/
