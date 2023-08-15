@@ -4,6 +4,7 @@ import { Link, useParams } from "react-router-dom";
 import ButtonComponent from "../ButtonComponent/ButtonComponent";
 import ItemCount from "../ItemCount/ItemCount";
 import { CartContext } from "../../context/CartContext";
+import ItemDetail from "./ItemDetail";
 
 function ItemDetailsContainer() {
   const [product, setProduct] = useState({});
@@ -33,7 +34,7 @@ function ItemDetailsContainer() {
     <div className="item-card-1">
     <div style={{ marginBottom: "150px" }}>
       <div>
-        <img width={800} src={product.img} alt="imagen"></img>
+        <img width={800} src={"."+product.img} alt="imagen"></img>
       </div>
       <div>
         <h2>{product.title}</h2>
@@ -44,7 +45,9 @@ function ItemDetailsContainer() {
       </div>
       {product.stock > 0 ? (
         isAddedToCart ? (
-          <a href="/cart">Ir al carrito</a>
+          <Link to="/cart">
+        <ButtonComponent>Ir al carrito</ButtonComponent>
+      </Link>
         ) : (
           <ItemCount stock={maxItems} onConfirm={handleAddToCart} />
         )

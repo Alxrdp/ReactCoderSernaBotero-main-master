@@ -2,6 +2,8 @@ import { useNavigate } from "react-router-dom";
 import { CartContext } from "../../context/CartContext";
 import { createOrder } from "../../services/firebase";
 import { useContext, useState } from "react";
+import ButtonComponent from "../ButtonComponent/ButtonComponent";
+import { Link } from "react-router-dom";
 
 function Checkout() {
   const [buyer, setBuyer] = useState({
@@ -76,7 +78,6 @@ function Checkout() {
           onChange={onInputChange}
         />
       </div>
-
       <div style={{ display: "flex", marginBottom: 8 }}>
         <label style={{ width: "100px", marginRight: 4 }}>Edad</label>
         <input
@@ -86,7 +87,6 @@ function Checkout() {
           onChange={onInputChange}
         />
       </div>
-
       <button
         disabled={
           !(buyer.firstname !== "" && buyer.lastname !== "" && buyer.age !== "")
@@ -95,7 +95,10 @@ function Checkout() {
       >
         Confirmar Compra
       </button>
-      <button onClick={resetForm}>Cancelar</button>
+    
+        <Link to="/cart">
+      <ButtonComponent onClick={resetForm}>Cancelar</ButtonComponent>
+      </Link>
     </form>
   );
 }

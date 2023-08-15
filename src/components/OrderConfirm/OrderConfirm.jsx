@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getOrder } from "../../services/firebase";
+import Checkout from "../Checkout/Checkout";
 
 function OrderConfirm() {
   const [orderData, setOrderData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
   const { id } = useParams();
-
   useEffect(() => {
     getOrder(id)
       .then((order) => {
@@ -30,12 +30,14 @@ function OrderConfirm() {
       ) : orderData !== null ? (
         <div>
           <div className="item-card-1">
-            <p>Tus productos comprados:</p>
-            {orderData.items.map((item) => (
+            <h4>Tus productos comprados:
+              <span> </span>  
+            {orderData.items.map((item) => (              
               <small key={item.id}>
                 {item.title} - {item.count} unidades
-              </small>
+              </small>                         
             ))}
+            </h4>
           </div>
         </div>
       ) : (
