@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import { getData } from "../../services/firebase"; // Importa solo getData
+import { getData } from "../../services/firebase";
 import { useParams } from "react-router-dom";
 import ItemList from "../ItemList/ItemList";
 import { Ring } from "@uiball/loaders";
-import ButtonComponent from "../ButtonComponent/ButtonComponent";
+
 function ItemListContainer() {
   const [products, setProducts] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
@@ -13,7 +13,7 @@ function ItemListContainer() {
   useEffect(() => {
     setIsLoading(true);
     async function requestProducts() {
-      const respuesta = await getData(); // Usa solo getData
+      const respuesta = await getData();
       setProducts(respuesta);
       setIsLoading(false);
     }

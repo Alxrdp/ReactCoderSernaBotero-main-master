@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { getOrder } from "../../services/firebase";
-import Checkout from "../Checkout/Checkout";
 
 function OrderConfirm() {
   const [orderData, setOrderData] = useState(null);
@@ -31,11 +30,12 @@ function OrderConfirm() {
         <div>
           <div className="item-card-1">
             <h4>Tus productos comprados:
-              <span> </span>  
+              
             {orderData.items.map((item) => (              
-              <small key={item.id}>
-                {item.title} - {item.count} unidades
-              </small>                         
+              <p style={{ color: "black" }} key={item.id}>
+                {item.title} - {item.count} unidades 
+                <span> </span>  
+              </p>                         
             ))}
             </h4>
           </div>

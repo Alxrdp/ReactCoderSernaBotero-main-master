@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import ButtonComponent from "../ButtonComponent/ButtonComponent";
 
 function ItemCount(props) {
   const [clickCount, setClickCount] = useState(1);

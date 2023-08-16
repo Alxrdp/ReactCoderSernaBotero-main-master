@@ -4,7 +4,6 @@ import { Link, useParams } from "react-router-dom";
 import ButtonComponent from "../ButtonComponent/ButtonComponent";
 import ItemCount from "../ItemCount/ItemCount";
 import { CartContext } from "../../context/CartContext";
-import ItemDetail from "./ItemDetail";
 
 function ItemDetailsContainer() {
   const [product, setProduct] = useState({});
