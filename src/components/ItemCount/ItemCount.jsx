@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import ButtonComponent from "../ButtonComponent/ButtonComponent";
 
 function ItemCount(props) {
   const [clickCount, setClickCount] = useState(1);
@@ -34,7 +35,7 @@ function ItemCount(props) {
         >
           -
         </button>
-        <h2 className="count-text">{clickCount}</h2>
+        <h3 className="count-text">{clickCount}</h3>
         <button
           disabled={props.stock === 0}
           className="item-count-button"
@@ -43,13 +44,14 @@ function ItemCount(props) {
           +
         </button>
       </div>
-
+      
       <button
         disabled={props.stock === 0}
         onClick={() => props.onConfirm(clickCount)}
         className="item-count-button add-to-cart-button"
-      > <h4>Añadir al carrito</h4>
+      > <h5>Añadir al carrito</h5>
       </button>
+      
     </div>
   );
 }

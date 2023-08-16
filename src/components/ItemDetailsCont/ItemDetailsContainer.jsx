@@ -34,7 +34,7 @@ function ItemDetailsContainer() {
     <div className="item-card-1">
     <div style={{ marginBottom: "150px" }}>
       <div>
-        <img width={800} src={"."+product.img} alt="imagen"></img>
+        <img width={200} src={"."+product.img} alt="imagen"></img>
       </div>
       <div>
         <h2>{product.title}</h2>

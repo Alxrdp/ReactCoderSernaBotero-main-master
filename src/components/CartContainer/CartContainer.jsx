@@ -54,12 +54,12 @@ function CartContainer() {
           <p>Precio unitario: ${item.price}</p>
           <p>Cantidad a comprar: {item.count}</p>
           <p>Precio total: ${item.count * item.price}</p>
-          <ButtonComponent onClick={() => removeItem(item.id)}>Eliminar</ButtonComponent>
+          <button onClick={() => removeItem(item.id)}>Eliminar</button>
         </div>
       ))}
       <br />
       <div>Total de la compra: ${calculateTotal()}</div>
-      <Link to="/checkout"><ButtonComponent>Comprar</ButtonComponent></Link>
+      <Link to="/checkout"><button>Comprar</button></Link>
     </div>
   );
 }

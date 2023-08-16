@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { getData } from "../../services/firebase";
 import "../Item/ItemCervezas.css";
 
+
 const ItemDetail = () => {
   const [producto, setProducto] = useState(null);
 

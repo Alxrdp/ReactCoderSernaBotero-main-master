@@ -8,6 +8,7 @@ import CartContainer from "./components/CartContainer/CartContainer";
 import Checkout from "./components/Checkout/Checkout";
 import OrderConfirm from "./components/OrderConfirm/OrderConfirm";
 import { CartContextProvider } from "./context/CartContext";
+import Error from './components/Error/Error'
 
 
 function App() {
@@ -21,10 +22,10 @@ function App() {
             <Route path="/" element={<ItemListContainer />} />
             <Route path="/category/:categoryId" element={<ItemListContainer />}/>
             <Route path="/product/:id" element={<ItemDetailsContainer />} />
-            <Route path="/cart" element={<CartContainer />}/>
+            <Route path="/cart" element={<CartContainer />}></Route>
             <Route path="/checkout" element={<Checkout/>}/>
-            <Route path="/order-confirmation/:id" element={ <OrderConfirm/>}/>
-           <Route path="*" element={<h1>Page not found: 404</h1>} />
+            <Route path="/order-confirmation/:id" element={ <OrderConfirm/>}></Route>
+           <Route path="*" element={<Error />} />
           </Routes>
         </BrowserRouter>
     </div>
